@@ -1,0 +1,27 @@
+<resources>
+    <string name="app_name">Calculadora</string>
+    <string name="miPrimerBoton">Incrementa</string>
+    <string name="miSegundoBoton">Decrementa</string>
+    <string name="display">0</string>
+
+    <string name="boton0">0</string>
+    <string name="boton1">1</string>
+    <string name="boton2">2</string>
+    <string name="boton3">3</string>
+    <string name="boton4">4</string>
+    <string name="boton5">5</string>
+    <string name="boton6">6</string>
+    <string name="boton7">7</string>
+    <string name="boton8">8</string>
+    <string name="boton9">9</string>
+
+    <string name="mas">+</string>
+    <string name="menos">-</string>
+    <string name="por">*</string>
+    <string name="entre">/</string>
+    <string name="igual">=</string>
+    <string name="limpia">C</string>
+
+
+
+</resources>
