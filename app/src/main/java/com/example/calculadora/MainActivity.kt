@@ -2,23 +2,28 @@ package com.example.calculadora
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.TextView
 
-private const val TAG = "MainActivity"
-
-class MainActivity : AppCompatActivity() {
+abstract class MainActivity : AppCompatActivity() {
 
     //private lateinit var miPrimerBoton : Button
     private lateinit var display : TextView
     private var usuarioEstaEscribiendo = false
-    //private var contador = 0
-    private var operandoSiguiente = 0 //No creo que se necesite
+    private var resultado = 0
+
+
+    /*
+    Variables de la clase ModeloCalculadora
+
+    private var operandoSiguiente = 0
     private var operacionEnEsperaDeOperando = ""
     private var operando = 0
-    private var resultado = 0
+    */
+
+    private var modeloCalculadora = ModeloCalculadora()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -57,14 +62,15 @@ class MainActivity : AppCompatActivity() {
     fun operacionPresionada(unBoton : View){
         val operacionPresionada = (unBoton as Button).text.toString()
         if (usuarioEstaEscribiendo){
-            operando = display.text.toString().toInt()
+            //operando = display.text.toString().toInt()
+                modeloCalculadora.setOperando(display.text.toString().toInt())
             usuarioEstaEscribiendo = false
         }
-        resultado = ejecutaOperacion(operacionPresionada)
+        resultado = modeloCalculadora.ejecutaOperacion(operacionPresionada)
         display.text = resultado.toString()
 
     }
-
+    /*
     private fun ejecutaOperacion(operacion : String) : Int {
         ejecutaOperacionEnEspera()
         operacionEnEsperaDeOperando = operacion
@@ -87,6 +93,6 @@ class MainActivity : AppCompatActivity() {
         }
         Log.d(TAG, operacionEnEsperaDeOperando)
         return true
-    }
+    }*/
 
 }
