@@ -21,7 +21,9 @@
     <string name="entre">/</string>
     <string name="igual">=</string>
     <string name="limpia">C</string>
-
+    <string name="punto">.</string>
+    <string name="cambioSigno">+/-</string>
+    <string name="fraccion">%</string>
 
 
 </resources>
