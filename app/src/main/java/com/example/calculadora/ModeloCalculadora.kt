@@ -1,9 +1,42 @@
+//
+//  ModeloCalculadora.ky
+//  Calculadora
+//
+//  Creado por Bernardo García el 18/08/21.
+//
+//
+// Descripción: La clase ModeloCalculadora se encarga de realizar todas las funciones necesarias
+// para la lógica de la calculadora. De igual forma, se encarga de ciertos procesos adicionales que
+// requiere el controlador para la verificación y buen funcionamiento de la misma calculadora.
+//
+//
+
 package com.example.calculadora
 
+import kotlin.math.*
+
 class ModeloCalculadora {
+    /*
+        Se requieren variables para guardar los dos operandos distintos, el operador que
+        se va a ejecutar, una variable para usarlo como argumento y determine si los radianes
+        están activados o no.
+    */
     private var operandoSiguiente = 0.0
-    private var operacionEnEsperaDeOperando = ""
     private var operando = 0.0
+    private var operacionEnEsperaDeOperando = ""
+    private var radDeg = 1.0
+
+    /*
+        Se requieren una variable en donde se pueda almacenar el mensaje de error si
+        existe alguno
+    */
+    private var mensajeError = ""
+
+    /*
+        Se requieren una variable que sirva de memoria para almacenar el valor
+        que el usuario pida
+    */
+    private var memoria = 0.0
 
     /*
         fun ejecutaEspecial
@@ -11,13 +44,31 @@ class ModeloCalculadora {
         return Double
 
         Descripción: Regresa lo que se va a desplegar en el display después
-        de haber presionado una de las siguientes funciones: limpia, ...
+        de haber presionado una de las siguientes operaciones de un solo
+        operando: limpia, cambio de signo, ...
 
      */
 
     fun ejecutaEspecial(unSimbolo: String): Double{
         when(unSimbolo){
-            "C"->limpia()
+            "C" -> limpia()
+            "+/-" -> operando*=-1
+            "sin(x)" -> operando = sin(operando*radDeg)
+            "cos(x)" -> operando = cos(operando*radDeg)
+            "10^x" -> operando = 10.0.pow(operando)
+            "1/x" -> {
+                if(operando!=0.0)
+                    operando = 1/operando
+                else
+                    mensajeError = "División entre 0"
+
+            }
+            "sqrt(x)" -> {
+                if(operando>=0.0)
+                    operando = sqrt(operando)
+                else
+                    mensajeError = "Raíz cuadrada de número negativo"
+            }
         }
         return operando
     }
@@ -53,7 +104,7 @@ class ModeloCalculadora {
     }
 
     /*
-        fun asignaFlotante
+        fun entregaResultado
         params Double
         return String
 
@@ -62,7 +113,7 @@ class ModeloCalculadora {
         entero dentro de un String
 
      */
-    fun asignaFlotante(unValor: Double): String {
+    fun entregaResultado(unValor: Double): String {
         return if (unValor.toInt().toDouble() != unValor)
             unValor.toString()
         else
@@ -85,10 +136,13 @@ class ModeloCalculadora {
             "+"-> operando += operandoSiguiente
             "-"-> operando = operandoSiguiente - operando
             "*"-> operando *= operandoSiguiente
+            "x^n" -> operando = operando.pow(operandoSiguiente)
             "/"-> {
                 if (operando != 0.0) {
                     operando = operandoSiguiente / operando
                 }
+                else
+                    mensajeError = "División entre 0"
             }
 
         }
@@ -109,6 +163,86 @@ class ModeloCalculadora {
         operando = 0.0
         operandoSiguiente = 0.0
         operacionEnEsperaDeOperando = ""
+        memoria = 0.0
+    }
+    /*
+        fun cambiaRadianes
+        params ---
+        return ---
+
+        Descripción: La función se encarga de hacer la variable "radDeg (Double)"
+        adaptarse a usarse como un operando multiplicativo dentro de una función trigonométrica
+        y corresponda a radianes o grades.
+
+        Ejemplo: Las funciones trigonométricas en Kotlin funcionan en radianes. El argumento
+        de las funciones tiene que estar multiplicado por 1 en ese caso. En el caso que se quiera
+        en grados, se va a necesitar multiplicar por el factor adecuado al cambio (180 / PI)
+     */
+    fun cambiaRadianes(){
+        radDeg = if(radDeg==1.0)
+            180/ PI
+        else
+            1.0
     }
 
+    /*
+        fun ejecutaMemoria
+        params String, Double
+        return String
+
+        Descripción: Ejecuta las funciones relacionadas a la memoria que no tengan que modificar
+        el display principal de la aplicación. Solo hace cambios en el almacenamiento de la memoria
+        y regresa la memoria como un String.
+
+     */
+
+    fun ejecutaMemoria(unaFuncion: String, unValor: Double): String{
+        when(unaFuncion) {
+            "Store" -> memoria = unValor
+            "Mem+" -> memoria += unValor
+            "Mem-" -> memoria -= unValor
+            "MC" -> memoria = 0.0
+        }
+        return entregaResultado(memoria)
+    }
+
+    /*
+    fun returnMemoria
+    params ---
+    return String
+
+    Descripción: Regresa lo almacenado en memoria como un String para poder desplegarlo en
+    el display principal.
+
+    */
+
+    fun returnMemoria(): String {
+        return entregaResultado(memoria)
+    }
+
+    /*
+        fun esError
+        params ---
+        return ---
+
+        Descripción: Devuelve verdadero si existe un mensaje de error
+     */
+
+    fun hayError() : Boolean{
+        return mensajeError.isNotEmpty()
+    }
+
+    /*
+        fun getError
+        params ---
+        return String
+
+        Descripción: Devuelve el mensaje de error y vacía la variable "mensajeError"
+     */
+
+    fun getError() : String{
+        val tmp = mensajeError
+        mensajeError = ""
+        return tmp
+    }
 }

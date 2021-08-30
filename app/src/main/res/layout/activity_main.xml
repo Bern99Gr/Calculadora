@@ -4,23 +4,295 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:onClick="especialPresionado"
     tools:context=".MainActivity"
     tools:ignore="DuplicateSpeakableTextCheck,UsingOnClickInXml">
 
     <TextView
+        android:id="@+id/mem"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="12dp"
+        android:text="@string/mem"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/borrar"
+        app:layout_constraintEnd_toStartOf="@+id/displayMemoria" />
+
+    <TextView
+        android:id="@+id/displayMemoria"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/displayMemoria"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/mem"
+        app:layout_constraintEnd_toEndOf="@+id/borrar"
+        app:layout_constraintTop_toTopOf="@+id/mem" />
+
+    <TextView
         android:id="@+id/display"
         android:layout_width="372dp"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:text="@string/display"
         android:textAlignment="textEnd"
         android:textSize="60sp"
+        app:autoSizeTextType="uniform"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/boton0"
+        android:layout_width="188dp"
+        android:layout_height="48dp"
+        android:onClick="digitoPresionado"
+        android:text="@string/boton0"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/punto"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="DuplicateSpeakableTextCheck,UsingOnClickInXml" />
+
+    <Switch
+        android:id="@+id/radDeg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:minHeight="48dp"
+        android:text="@string/radDeg"
+        app:layout_constraintBottom_toTopOf="@+id/matematicas"
+        app:layout_constraintStart_toStartOf="@+id/matematicas" />
+
+    <Button
+        android:id="@+id/boton3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="digitoPresionado"
+        android:text="@string/boton3"
+        app:layout_constraintEnd_toStartOf="@+id/mas"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/boton2"
+        app:layout_constraintTop_toTopOf="@+id/boton2"
+        tools:ignore="UsingOnClickInXml" />
+
+    <Button
+        android:id="@+id/boton2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="digitoPresionado"
+        android:text="@string/boton2"
+        app:layout_constraintEnd_toStartOf="@+id/boton3"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/boton1"
+        app:layout_constraintTop_toTopOf="@+id/boton1"
+        tools:ignore="UsingOnClickInXml" />
+
+    <Button
+        android:id="@+id/menos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/purple_500"
+        android:onClick="operacionPresionada"
+        android:text="@string/menos"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/boton6"
+        app:layout_constraintTop_toTopOf="@+id/boton6"
+        tools:ignore="UsingOnClickInXml" />
+
+    <Button
+        android:id="@+id/boton1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="digitoPresionado"
+        android:text="@string/boton1"
+        app:layout_constraintBottom_toTopOf="@+id/boton0"
+        app:layout_constraintEnd_toStartOf="@+id/boton2"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="UsingOnClickInXml" />
+
+    <Button
+        android:id="@+id/igual"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/purple_500"
+        android:onClick="operacionPresionada"
+        android:text="@string/igual"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/punto"
+        app:layout_constraintTop_toTopOf="@+id/punto"
+        tools:ignore="UsingOnClickInXml" />
+
+    <Button
+        android:id="@+id/fraccion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="especialPresionado"
+        android:text="@string/fraccion"
+        app:layout_constraintEnd_toStartOf="@+id/entre"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/cambioSigno"
+        app:layout_constraintTop_toTopOf="@+id/cambioSigno" />
+
+    <Button
+        android:id="@+id/boton9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="digitoPresionado"
+        android:text="@string/boton9"
+        app:layout_constraintEnd_toStartOf="@+id/por"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/boton8"
+        app:layout_constraintTop_toTopOf="@+id/boton8"
+        tools:ignore="UsingOnClickInXml" />
+
+    <Button
+        android:id="@+id/punto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="puntoPresionado"
+        android:text="@string/punto"
+        app:layout_constraintEnd_toStartOf="@+id/igual"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/boton0"
+        app:layout_constraintTop_toTopOf="@+id/boton0" />
+
+    <Button
+        android:id="@+id/borrar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="backspacePresionado"
+        android:text="@string/borrar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/pi"
+        app:layout_constraintTop_toTopOf="@+id/pi" />
+
+    <Button
+        android:id="@+id/entre"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/purple_500"
+        android:onClick="operacionPresionada"
+        android:text="@string/entre"
+        android:textColor="#FFFFFF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/fraccion"
+        app:layout_constraintTop_toTopOf="@+id/fraccion"
+        tools:ignore="UsingOnClickInXml" />
+
+    <Button
+        android:id="@+id/matematicas"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/matematicas"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toTopOf="@+id/limpia"
+        app:layout_constraintEnd_toStartOf="@+id/memoria"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/boton5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="digitoPresionado"
+        android:text="@string/boton5"
+        app:layout_constraintEnd_toStartOf="@+id/boton6"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/boton4"
+        app:layout_constraintTop_toTopOf="@+id/boton4"
+        tools:ignore="UsingOnClickInXml" />
+
+    <Button
+        android:id="@+id/memoria"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/memoria"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toStartOf="@+id/pi"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/matematicas"
+        app:layout_constraintTop_toTopOf="@+id/matematicas" />
+
+    <Button
+        android:id="@+id/boton4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="digitoPresionado"
+        android:text="@string/boton4"
+        app:layout_constraintBottom_toTopOf="@+id/boton1"
+        app:layout_constraintEnd_toStartOf="@+id/boton5"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="UsingOnClickInXml" />
+
+    <Button
+        android:id="@+id/limpia"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="especialPresionado"
+        android:text="@string/limpia"
+        app:layout_constraintBottom_toTopOf="@+id/boton7"
+        app:layout_constraintEnd_toStartOf="@+id/cambioSigno"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="UsingOnClickInXml" />
+
+    <Button
+        android:id="@+id/por"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/purple_500"
+        android:onClick="operacionPresionada"
+        android:text="@string/por"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/boton9"
+        app:layout_constraintTop_toTopOf="@+id/boton9"
+        tools:ignore="UsingOnClickInXml" />
+
+    <Button
+        android:id="@+id/boton7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="digitoPresionado"
+        android:text="@string/boton7"
+        app:layout_constraintBottom_toTopOf="@+id/boton4"
+        app:layout_constraintEnd_toStartOf="@+id/boton8"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="UsingOnClickInXml" />
+
+    <Button
+        android:id="@+id/mas"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/purple_500"
+        android:onClick="operacionPresionada"
+        android:text="@string/mas"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/boton3"
+        app:layout_constraintTop_toTopOf="@+id/boton3"
+        tools:ignore="UsingOnClickInXml" />
+
+    <Button
+        android:id="@+id/cambioSigno"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="especialPresionado"
+        android:text="@string/cambioSigno"
+        app:layout_constraintEnd_toStartOf="@+id/fraccion"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/limpia"
+        app:layout_constraintTop_toTopOf="@+id/limpia" />
 
     <Button
         android:id="@+id/boton8"
@@ -47,209 +319,26 @@
         tools:ignore="UsingOnClickInXml" />
 
     <Button
-        android:id="@+id/boton5"
+        android:id="@+id/pi"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="digitoPresionado"
-        android:text="@string/boton5"
-        app:layout_constraintEnd_toStartOf="@+id/boton6"
+        android:text="@string/pi"
+        app:layout_constraintEnd_toStartOf="@+id/borrar"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/boton4"
-        app:layout_constraintTop_toTopOf="@+id/boton4"
-        tools:ignore="UsingOnClickInXml" />
+        app:layout_constraintStart_toEndOf="@+id/memoria"
+        app:layout_constraintTop_toTopOf="@+id/memoria" />
 
-    <Button
-        android:id="@+id/boton4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="digitoPresionado"
-        android:text="@string/boton4"
-        app:layout_constraintEnd_toStartOf="@+id/boton5"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/boton7"
-        tools:ignore="UsingOnClickInXml" />
-
-    <Button
-        android:id="@+id/boton3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="digitoPresionado"
-        android:text="@string/boton3"
-        app:layout_constraintEnd_toStartOf="@+id/mas"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/boton2"
-        app:layout_constraintTop_toTopOf="@+id/boton2"
-        tools:ignore="UsingOnClickInXml" />
-
-    <Button
-        android:id="@+id/mas"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:backgroundTint="@color/purple_500"
-        android:onClick="operacionPresionada"
-        android:text="@string/mas"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/boton3"
-        app:layout_constraintTop_toTopOf="@+id/boton3"
-        tools:ignore="UsingOnClickInXml" />
-
-    <Button
-        android:id="@+id/boton2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="digitoPresionado"
-        android:text="@string/boton2"
-        app:layout_constraintEnd_toStartOf="@+id/boton3"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/boton1"
-        app:layout_constraintTop_toTopOf="@+id/boton1"
-        tools:ignore="UsingOnClickInXml" />
-
-    <Button
-        android:id="@+id/boton1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="digitoPresionado"
-        android:text="@string/boton1"
-        app:layout_constraintEnd_toStartOf="@+id/boton2"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/boton4"
-        tools:ignore="UsingOnClickInXml" />
-
-    <Button
-        android:id="@+id/igual"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:backgroundTint="@color/purple_500"
-        android:onClick="operacionPresionada"
-        android:text="@string/igual"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/punto"
-        app:layout_constraintTop_toTopOf="@+id/punto"
-        tools:ignore="UsingOnClickInXml" />
-
-    <Button
-        android:id="@+id/boton0"
-        android:layout_width="188dp"
-        android:layout_height="48dp"
-        android:onClick="digitoPresionado"
-        android:text="@string/boton0"
-        app:layout_constraintEnd_toStartOf="@+id/punto"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/boton1"
-        tools:ignore="DuplicateSpeakableTextCheck,UsingOnClickInXml" />
-
-    <Button
-        android:id="@+id/menos"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:backgroundTint="@color/purple_500"
-        android:onClick="operacionPresionada"
-        android:text="@string/menos"
-        android:textColor="@color/white"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/boton6"
-        app:layout_constraintTop_toTopOf="@+id/boton6"
-        tools:ignore="UsingOnClickInXml" />
-
-    <Button
-        android:id="@+id/boton7"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="digitoPresionado"
-        android:text="@string/boton7"
-        app:layout_constraintEnd_toStartOf="@+id/boton8"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/limpia"
-        tools:ignore="UsingOnClickInXml" />
-
-    <Button
-        android:id="@+id/boton9"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="digitoPresionado"
-        android:text="@string/boton9"
-        app:layout_constraintEnd_toStartOf="@+id/por"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/boton8"
-        app:layout_constraintTop_toTopOf="@+id/boton8"
-        tools:ignore="UsingOnClickInXml" />
-
-    <Button
-        android:id="@+id/entre"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:backgroundTint="@color/purple_500"
-        android:onClick="operacionPresionada"
-        android:text="@string/entre"
-        android:textColor="#FFFFFF"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/fraccion"
-        app:layout_constraintTop_toTopOf="@+id/fraccion"
-        tools:ignore="UsingOnClickInXml" />
-
-    <Button
-        android:id="@+id/por"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:backgroundTint="@color/purple_500"
-        android:onClick="operacionPresionada"
-        android:text="@string/por"
-        android:textColor="@color/white"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/boton9"
-        app:layout_constraintTop_toTopOf="@+id/boton9"
-        tools:ignore="UsingOnClickInXml" />
-
-    <Button
-        android:id="@+id/limpia"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="156dp"
-        android:text="@string/limpia"
-        app:layout_constraintEnd_toStartOf="@+id/cambioSigno"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/display"
-        tools:ignore="UsingOnClickInXml" />
-
-    <Button
-        android:id="@+id/punto"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/punto"
-        app:layout_constraintEnd_toStartOf="@+id/igual"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/boton0"
-        app:layout_constraintTop_toTopOf="@+id/boton0" />
-
-    <Button
-        android:id="@+id/cambioSigno"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/cambioSigno"
-        app:layout_constraintEnd_toStartOf="@+id/fraccion"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/limpia"
-        app:layout_constraintTop_toTopOf="@+id/limpia" />
-
-    <Button
-        android:id="@+id/fraccion"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/fraccion"
-        app:layout_constraintEnd_toStartOf="@+id/entre"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/cambioSigno"
-        app:layout_constraintTop_toTopOf="@+id/cambioSigno" />
+    <TextView
+        android:id="@+id/displayEstado"
+        android:layout_width="372dp"
+        android:layout_height="43dp"
+        android:layout_marginTop="4dp"
+        android:text="@string/displayEstado"
+        android:textAlignment="textEnd"
+        app:autoSizeMaxTextSize="14dp"
+        app:autoSizeTextType="uniform"
+        app:layout_constraintEnd_toEndOf="@+id/display"
+        app:layout_constraintStart_toStartOf="@+id/display"
+        app:layout_constraintTop_toBottomOf="@+id/display" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
