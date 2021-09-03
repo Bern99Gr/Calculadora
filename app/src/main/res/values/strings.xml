@@ -1,7 +1,5 @@
 <resources>
     <string name="app_name">Calculadora</string>
-    <string name="miPrimerBoton">Incrementa</string>
-    <string name="miSegundoBoton">Decrementa</string>
     <string name="display">0</string>
     <string name="displayEstado">0</string>
 
@@ -27,17 +25,16 @@
     <string name="cambioSigno">+/-</string>
     <string name="fraccion">1/x</string>
     <string name="borrar">\u232b</string>
-    <string name="matematicas">MATH\u2193</string>
-    <string name="memoria">MEM\u2193</string>
     <string name="pi">\u03C0</string>
     <string name="radDeg">DEG</string>
+    <string name="displayRadianes">RAD</string>
 
     <string name="sin">sin</string>
     <string name="cos">cos</string>
     <string name="sqrt">√</string>
-    <string name="potencia10">10\u02e3</string>
+    <string name="potencia10">10ˣ</string>
     <string name="elevar">xʸ</string>
-    <string name="root">\u02e3√n</string>
+    <string name="root">ʸ√</string>
 
     <string name="store">Store</string>
     <string name="recall">Recall</string>
@@ -47,8 +44,7 @@
     <string name="mem">Mem: </string>
     <string name="displayMemoria">0</string>
 
-    <string name="separator">|</string>
-
+    <string name="contenidoEstado">%1$s %2$s %3$s</string>
 
 
 </resources>

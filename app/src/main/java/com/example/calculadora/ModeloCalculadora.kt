@@ -46,6 +46,7 @@ class ModeloCalculadora {
         Descripción: Regresa lo que se va a desplegar en el display después
         de haber presionado una de las siguientes operaciones de un solo
         operando: limpia, cambio de signo, ...
+        Usar la variable operandoSiguiente
 
      */
 
@@ -53,9 +54,10 @@ class ModeloCalculadora {
         when(unSimbolo){
             "C" -> limpia()
             "+/-" -> operando*=-1
-            "sin(x)" -> operando = sin(operando*radDeg)
-            "cos(x)" -> operando = cos(operando*radDeg)
-            "10^x" -> operando = 10.0.pow(operando)
+            "sin" -> operando = sin(operando*radDeg)
+            "cos" -> operando = cos(operando*radDeg)
+            "10ˣ" -> operando = 10.0.pow(operando)
+            "π" -> operando = PI
             "1/x" -> {
                 if(operando!=0.0)
                     operando = 1/operando
@@ -63,13 +65,14 @@ class ModeloCalculadora {
                     mensajeError = "División entre 0"
 
             }
-            "sqrt(x)" -> {
+            "√" -> {
                 if(operando>=0.0)
                     operando = sqrt(operando)
                 else
                     mensajeError = "Raíz cuadrada de número negativo"
             }
         }
+        revisarInfinito()
         return operando
     }
     /*
@@ -98,7 +101,7 @@ class ModeloCalculadora {
     */
     fun ejecutaOperacion(operacion : String) : Double {
         ejecutaOperacionEnEspera()
-        operacionEnEsperaDeOperando = operacion
+        operacionEnEsperaDeOperando = reformatOperacion(operacion)
         operandoSiguiente = operando
         return operando
     }
@@ -136,7 +139,13 @@ class ModeloCalculadora {
             "+"-> operando += operandoSiguiente
             "-"-> operando = operandoSiguiente - operando
             "*"-> operando *= operandoSiguiente
-            "x^n" -> operando = operando.pow(operandoSiguiente)
+            "^" -> operando = operandoSiguiente.pow(operando)
+            "root" -> {
+                if(operando!=0.0)
+                    operando = operandoSiguiente.pow(1/operando)
+                else
+                    mensajeError = "Existe una división entre 0"
+            }
             "/"-> {
                 if (operando != 0.0) {
                     operando = operandoSiguiente / operando
@@ -146,6 +155,7 @@ class ModeloCalculadora {
             }
 
         }
+        revisarInfinito()
 
     }
 
@@ -165,9 +175,21 @@ class ModeloCalculadora {
         operacionEnEsperaDeOperando = ""
         memoria = 0.0
     }
+
+    /*
+
+     */
+
+    private fun reformatOperacion(operacion: String): String{
+        when(operacion){
+            "xʸ" -> return "^"
+            "ʸ√" -> return "root"
+        }
+        return operacion
+    }
     /*
         fun cambiaRadianes
-        params ---
+        params Boolean
         return ---
 
         Descripción: La función se encarga de hacer la variable "radDeg (Double)"
@@ -176,13 +198,19 @@ class ModeloCalculadora {
 
         Ejemplo: Las funciones trigonométricas en Kotlin funcionan en radianes. El argumento
         de las funciones tiene que estar multiplicado por 1 en ese caso. En el caso que se quiera
-        en grados, se va a necesitar multiplicar por el factor adecuado al cambio (180 / PI)
+        en grados, se va a necesitar multiplicar por el factor adecuado al cambio (180 / PI).
+        Si el parámetro recibido es verdadero, significa que se tiene que cambiar a grados, de lo
+        contrario, se deja en radianes.
      */
-    fun cambiaRadianes(){
-        radDeg = if(radDeg==1.0)
-            180/ PI
-        else
+
+    fun cambiaRadianes(deg: Boolean){
+        radDeg = if(deg) {
+            PI / 180
+        }
+        else{
             1.0
+        }
+
     }
 
     /*
@@ -203,6 +231,7 @@ class ModeloCalculadora {
             "Mem-" -> memoria -= unValor
             "MC" -> memoria = 0.0
         }
+        revisarInfinito()
         return entregaResultado(memoria)
     }
 
@@ -244,5 +273,53 @@ class ModeloCalculadora {
         val tmp = mensajeError
         mensajeError = ""
         return tmp
+    }
+
+    /*
+        fun getOperacion
+        params ---
+        return String
+
+        Descripción: Devuelve el símbolo de la operación a realizar
+        que está almacenado en el modelo calculadora si es distinto que
+        símbolo de igual
+     */
+
+    fun getOperacion(): String{
+        if (operacionEnEsperaDeOperando=="=")
+            return ""
+        return operacionEnEsperaDeOperando
+    }
+
+    /*
+       fun getOperando
+       params ---
+       return String
+
+       Descripción: Devuelve el valor del operandoSiguiente almacenado en el modelo calculadora
+    */
+
+    fun getOperando(): String{
+        return entregaResultado(operandoSiguiente)
+    }
+
+    /*
+        fun revisarInfinito
+        params ---
+        return ---
+
+        Descripción: Si el valor operando es infinito, se  cambia su valor a 0 y se
+        actualiza el mensaje de error.
+     */
+
+    private fun revisarInfinito(){
+        if(operando.isInfinite()){
+            operando = 0.0
+            mensajeError = "El número ya es demasiado grande"
+        }
+        if(memoria.isInfinite()){
+            memoria = 0.0
+            mensajeError = "El número ya es demasiado grande"
+        }
     }
 }

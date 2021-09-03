@@ -9,6 +9,14 @@
     tools:layout_editor_absoluteY="-58dp">
 
     <TextView
+        android:id="@+id/displayRadianes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/displayRadianes"
+        app:layout_constraintBottom_toBottomOf="@+id/display"
+        app:layout_constraintStart_toStartOf="@+id/limpia" />
+
+    <TextView
         android:id="@+id/display"
         android:layout_width="0dp"
         android:layout_height="61dp"
@@ -18,17 +26,20 @@
         android:textSize="60sp"
         app:autoSizeTextType="uniform"
         app:layout_constraintEnd_toEndOf="@+id/borrar"
-        app:layout_constraintStart_toStartOf="@+id/limpia"
+        app:layout_constraintStart_toEndOf="@+id/displayRadianes"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Switch
+    <androidx.appcompat.widget.SwitchCompat
         android:id="@+id/radDeg"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="81dp"
+        android:layout_height="48dp"
         android:minHeight="48dp"
+        android:onClick="deg2radPresionado"
         android:text="@string/radDeg"
         app:layout_constraintBottom_toBottomOf="@+id/mc"
-        app:layout_constraintEnd_toStartOf="@+id/mc" />
+        app:layout_constraintEnd_toStartOf="@+id/mc"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="UsingOnClickInXml" />
 
     <TextView
         android:id="@+id/displayEstado"
@@ -44,10 +55,11 @@
 
     <Button
         android:id="@+id/boton9"
-        android:layout_width="60dp"
+        android:layout_width="70dp"
         android:layout_height="wrap_content"
         android:onClick="digitoPresionado"
         android:text="@string/boton9"
+        android:textColor="@color/primColorContrast"
         app:layout_constraintEnd_toStartOf="@+id/por"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/boton8"
@@ -56,30 +68,31 @@
 
     <Button
         android:id="@+id/por"
-        android:layout_width="60dp"
+        android:layout_width="70dp"
         android:layout_height="wrap_content"
-        android:backgroundTint="@color/purple_500"
+        android:backgroundTint="@color/green_6e9"
         android:onClick="operacionPresionada"
         android:text="@string/por"
-        android:textColor="@color/white"
+        android:textColor="#212121"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/boton9"
         app:layout_constraintTop_toTopOf="@+id/boton9"
-        tools:ignore="UsingOnClickInXml" />
+        tools:ignore="UsingOnClickInXml,TextContrastCheck,TextContrastCheck" />
 
     <Button
         android:id="@+id/mas"
-        android:layout_width="60dp"
+        android:layout_width="70dp"
         android:layout_height="wrap_content"
-        android:backgroundTint="@color/purple_500"
+        android:backgroundTint="@color/green_6e9"
         android:onClick="operacionPresionada"
         android:text="@string/mas"
+        android:textColor="@color/secColorContrast"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/boton3"
         app:layout_constraintTop_toTopOf="@+id/boton3"
-        tools:ignore="UsingOnClickInXml" />
+        tools:ignore="UsingOnClickInXml,TextContrastCheck,TextContrastCheck" />
 
     <Button
         android:id="@+id/boton0"
@@ -88,6 +101,7 @@
         android:layout_marginBottom="16dp"
         android:onClick="digitoPresionado"
         android:text="@string/boton0"
+        android:textColor="@color/primColorContrast"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/boton2"
         app:layout_constraintStart_toStartOf="@+id/boton1"
@@ -95,23 +109,25 @@
 
     <Button
         android:id="@+id/punto"
-        android:layout_width="60dp"
+        android:layout_width="70dp"
         android:layout_height="wrap_content"
         android:onClick="puntoPresionado"
         android:text="@string/punto"
+        android:textColor="@color/primColorContrast"
         app:layout_constraintEnd_toStartOf="@+id/igual"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/boton0"
         app:layout_constraintTop_toTopOf="@+id/boton0"
-        tools:ignore="UsingOnClickInXml" />
+        tools:ignore="UsingOnClickInXml,TextContrastCheck,TextContrastCheck" />
 
     <Button
         android:id="@+id/igual"
-        android:layout_width="60dp"
+        android:layout_width="70dp"
         android:layout_height="wrap_content"
-        android:backgroundTint="@color/purple_500"
+        android:backgroundTint="@color/green_023"
         android:onClick="operacionPresionada"
         android:text="@string/igual"
+        android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/punto"
@@ -120,10 +136,11 @@
 
     <Button
         android:id="@+id/boton2"
-        android:layout_width="60dp"
+        android:layout_width="70dp"
         android:layout_height="wrap_content"
         android:onClick="digitoPresionado"
         android:text="@string/boton2"
+        android:textColor="@color/primColorContrast"
         app:layout_constraintEnd_toStartOf="@+id/boton3"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/boton1"
@@ -132,10 +149,11 @@
 
     <Button
         android:id="@+id/boton3"
-        android:layout_width="60dp"
+        android:layout_width="70dp"
         android:layout_height="wrap_content"
         android:onClick="digitoPresionado"
         android:text="@string/boton3"
+        android:textColor="@color/primColorContrast"
         app:layout_constraintEnd_toStartOf="@+id/mas"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/boton2"
@@ -144,84 +162,92 @@
 
     <Button
         android:id="@+id/boton1"
-        android:layout_width="60dp"
+        android:layout_width="70dp"
         android:layout_height="wrap_content"
         android:onClick="digitoPresionado"
         android:text="@string/boton1"
+        android:textColor="@color/primColorContrast"
         app:layout_constraintBottom_toTopOf="@+id/boton0"
         app:layout_constraintStart_toStartOf="@+id/boton4"
-        tools:ignore="UsingOnClickInXml" />
+        tools:ignore="UsingOnClickInXml,TextContrastCheck,TextContrastCheck" />
 
     <Button
         android:id="@+id/cambioSigno"
-        android:layout_width="60dp"
+        android:layout_width="70dp"
         android:layout_height="wrap_content"
+        android:backgroundTint="@color/green_6e9"
         android:onClick="especialPresionado"
         android:text="@string/cambioSigno"
+        android:textColor="@color/secColorContrast"
         app:layout_constraintEnd_toStartOf="@+id/fraccion"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/sqrt"
         app:layout_constraintTop_toTopOf="@+id/sqrt"
-        tools:ignore="UsingOnClickInXml" />
+        tools:ignore="UsingOnClickInXml,TextContrastCheck,TextContrastCheck" />
 
     <Button
         android:id="@+id/entre"
-        android:layout_width="60dp"
+        android:layout_width="70dp"
         android:layout_height="wrap_content"
-        android:backgroundTint="@color/purple_500"
+        android:backgroundTint="@color/green_6e9"
         android:onClick="operacionPresionada"
         android:text="@string/entre"
-        android:textColor="#FFFFFF"
+        android:textColor="@color/secColorContrast"
         app:layout_constraintEnd_toStartOf="@+id/borrar"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/pi"
         app:layout_constraintTop_toTopOf="@+id/pi"
-        tools:ignore="UsingOnClickInXml" />
+        tools:ignore="UsingOnClickInXml,TextContrastCheck,TextContrastCheck" />
 
     <Button
         android:id="@+id/fraccion"
-        android:layout_width="60dp"
+        android:layout_width="70dp"
         android:layout_height="wrap_content"
-        android:autoText="false"
+        android:backgroundTint="@color/green_6e9"
         android:onClick="especialPresionado"
         android:text="@string/fraccion"
+        android:textColor="@color/secColorContrast"
         android:textSize="12sp"
         app:layout_constraintEnd_toStartOf="@+id/pi"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/cambioSigno"
         app:layout_constraintTop_toTopOf="@+id/cambioSigno"
-        tools:ignore="UsingOnClickInXml" />
+        tools:ignore="UsingOnClickInXml,TextContrastCheck,TextContrastCheck" />
 
     <Button
         android:id="@+id/boton7"
-        android:layout_width="60dp"
+        android:layout_width="70dp"
         android:layout_height="wrap_content"
         android:onClick="digitoPresionado"
         android:text="@string/boton7"
+        android:textColor="@color/primColorContrast"
         app:layout_constraintEnd_toStartOf="@+id/boton8"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/memMenos"
         app:layout_constraintTop_toTopOf="@+id/memMenos"
-        tools:ignore="UsingOnClickInXml" />
+        tools:ignore="UsingOnClickInXml,TextContrastCheck,TextContrastCheck" />
 
     <Button
         android:id="@+id/limpia"
-        android:layout_width="60dp"
+        android:layout_width="70dp"
         android:layout_height="wrap_content"
+        android:backgroundTint="@color/blue_3d9"
         android:onClick="especialPresionado"
         android:text="@string/limpia"
+        android:textColor="@color/secColorContrast"
         app:layout_constraintBottom_toTopOf="@+id/root"
         app:layout_constraintEnd_toStartOf="@+id/sin"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        tools:ignore="UsingOnClickInXml" />
+        tools:ignore="UsingOnClickInXml,TextContrastCheck,TextContrastCheck" />
 
     <Button
         android:id="@+id/boton8"
-        android:layout_width="60dp"
+        android:layout_width="70dp"
         android:layout_height="wrap_content"
         android:onClick="digitoPresionado"
         android:text="@string/boton8"
+        android:textColor="@color/primColorContrast"
         app:layout_constraintEnd_toStartOf="@+id/boton9"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/boton7"
@@ -230,36 +256,42 @@
 
     <Button
         android:id="@+id/potencia10"
-        android:layout_width="60dp"
+        android:layout_width="70dp"
         android:layout_height="wrap_content"
+        android:backgroundTint="@color/green_6e9"
         android:onClick="especialPresionado"
         android:text="@string/potencia10"
+        android:textColor="@color/secColorContrast"
         android:textSize="11sp"
         app:layout_constraintEnd_toStartOf="@+id/elevar"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/root"
         app:layout_constraintTop_toTopOf="@+id/root"
-        tools:ignore="UsingOnClickInXml" />
+        tools:ignore="UsingOnClickInXml,TextContrastCheck,TextContrastCheck" />
 
     <Button
         android:id="@+id/elevar"
-        android:layout_width="60dp"
+        android:layout_width="70dp"
         android:layout_height="wrap_content"
+        android:backgroundTint="@color/green_6e9"
         android:onClick="operacionPresionada"
         android:text="@string/elevar"
+        android:textColor="@color/secColorContrast"
         android:textSize="11sp"
         app:layout_constraintEnd_toStartOf="@+id/memMas"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/potencia10"
         app:layout_constraintTop_toTopOf="@+id/potencia10"
-        tools:ignore="UsingOnClickInXml" />
+        tools:ignore="UsingOnClickInXml,TextContrastCheck,TextContrastCheck" />
 
     <Button
         android:id="@+id/memMenos"
-        android:layout_width="60dp"
+        android:layout_width="70dp"
         android:layout_height="wrap_content"
+        android:backgroundTint="@color/blue_d5e"
         android:onClick="memoriaPresionado"
         android:text="@string/memMenos"
+        android:textColor="@color/secColorContrast"
         android:textSize="11sp"
         app:layout_constraintEnd_toStartOf="@+id/boton7"
         app:layout_constraintHorizontal_bias="0.5"
@@ -269,50 +301,58 @@
 
     <Button
         android:id="@+id/sin"
-        android:layout_width="60dp"
+        android:layout_width="70dp"
         android:layout_height="wrap_content"
+        android:backgroundTint="@color/green_6e9"
         android:onClick="especialPresionado"
         android:text="@string/sin"
+        android:textColor="@color/secColorContrast"
         android:textSize="11sp"
         app:layout_constraintEnd_toStartOf="@+id/cos"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/limpia"
         app:layout_constraintTop_toTopOf="@+id/limpia"
-        tools:ignore="UsingOnClickInXml" />
+        tools:ignore="UsingOnClickInXml,TextContrastCheck,TextContrastCheck" />
 
     <Button
         android:id="@+id/sqrt"
-        android:layout_width="60dp"
+        android:layout_width="70dp"
         android:layout_height="wrap_content"
+        android:backgroundTint="@color/green_6e9"
         android:onClick="especialPresionado"
         android:text="@string/sqrt"
+        android:textColor="@color/secColorContrast"
         android:textSize="11sp"
         app:layout_constraintEnd_toStartOf="@+id/cambioSigno"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/cos"
         app:layout_constraintTop_toTopOf="@+id/cos"
-        tools:ignore="UsingOnClickInXml" />
+        tools:ignore="UsingOnClickInXml,TextContrastCheck,TextContrastCheck" />
 
     <Button
         android:id="@+id/cos"
-        android:layout_width="60dp"
+        android:layout_width="70dp"
         android:layout_height="wrap_content"
+        android:backgroundTint="@color/green_6e9"
         android:onClick="especialPresionado"
         android:text="@string/cos"
+        android:textColor="@color/secColorContrast"
         android:textSize="11sp"
         app:layout_constraintEnd_toStartOf="@+id/sqrt"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/sin"
         app:layout_constraintTop_toTopOf="@+id/sin"
-        tools:ignore="UsingOnClickInXml" />
+        tools:ignore="UsingOnClickInXml,TextContrastCheck,TextContrastCheck" />
 
     <Button
         android:id="@+id/store"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:backgroundTint="@color/blue_d5e"
         android:onClick="memoriaPresionado"
         android:singleLine="false"
         android:text="@string/store"
+        android:textColor="@color/secColorContrast"
         android:textSize="11sp"
         app:layout_constraintEnd_toStartOf="@+id/recall"
         app:layout_constraintHorizontal_bias="0"
@@ -324,8 +364,10 @@
         android:id="@+id/mc"
         android:layout_width="60dp"
         android:layout_height="wrap_content"
+        android:backgroundTint="@color/blue_d5e"
         android:onClick="memoriaPresionado"
         android:text="@string/mc"
+        android:textColor="@color/secColorContrast"
         android:textSize="11sp"
         app:layout_constraintBottom_toTopOf="@+id/boton1"
         app:layout_constraintEnd_toEndOf="@+id/potencia10"
@@ -334,10 +376,11 @@
 
     <Button
         android:id="@+id/boton6"
-        android:layout_width="60dp"
+        android:layout_width="70dp"
         android:layout_height="wrap_content"
         android:onClick="digitoPresionado"
         android:text="@string/boton6"
+        android:textColor="@color/primColorContrast"
         app:layout_constraintEnd_toStartOf="@+id/menos"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/boton5"
@@ -346,10 +389,11 @@
 
     <Button
         android:id="@+id/boton5"
-        android:layout_width="60dp"
+        android:layout_width="70dp"
         android:layout_height="wrap_content"
         android:onClick="digitoPresionado"
         android:text="@string/boton5"
+        android:textColor="@color/primColorContrast"
         app:layout_constraintEnd_toStartOf="@+id/boton6"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/boton4"
@@ -358,49 +402,54 @@
 
     <Button
         android:id="@+id/boton4"
-        android:layout_width="60dp"
+        android:layout_width="70dp"
         android:layout_height="wrap_content"
         android:onClick="digitoPresionado"
         android:text="@string/boton4"
+        android:textColor="@color/primColorContrast"
         app:layout_constraintEnd_toStartOf="@+id/boton5"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/memMenos"
         app:layout_constraintTop_toTopOf="@+id/recall"
-        tools:ignore="UsingOnClickInXml" />
+        tools:ignore="UsingOnClickInXml,TextContrastCheck,TextContrastCheck" />
 
     <Button
         android:id="@+id/menos"
-        android:layout_width="60dp"
+        android:layout_width="70dp"
         android:layout_height="wrap_content"
-        android:backgroundTint="@color/purple_500"
+        android:backgroundTint="@color/green_6e9"
         android:onClick="operacionPresionada"
         android:text="@string/menos"
-        android:textColor="@color/white"
+        android:textColor="@color/secColorContrast"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/boton6"
         app:layout_constraintTop_toTopOf="@+id/boton6"
-        tools:ignore="UsingOnClickInXml" />
+        tools:ignore="UsingOnClickInXml,TextContrastCheck,TextContrastCheck" />
 
     <Button
         android:id="@+id/root"
-        android:layout_width="60dp"
+        android:layout_width="70dp"
         android:layout_height="wrap_content"
+        android:backgroundTint="@color/green_6e9"
         android:onClick="operacionPresionada"
         android:text="@string/root"
+        android:textColor="@color/secColorContrast"
         android:textSize="11sp"
         app:layout_constraintBottom_toTopOf="@+id/mc"
         app:layout_constraintEnd_toStartOf="@+id/potencia10"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        tools:ignore="UsingOnClickInXml" />
+        tools:ignore="UsingOnClickInXml,TextContrastCheck,TextContrastCheck" />
 
     <Button
         android:id="@+id/memMas"
-        android:layout_width="60dp"
+        android:layout_width="70dp"
         android:layout_height="wrap_content"
+        android:backgroundTint="@color/blue_d5e"
         android:onClick="memoriaPresionado"
         android:text="@string/memMas"
+        android:textColor="@color/secColorContrast"
         android:textSize="11sp"
         app:layout_constraintEnd_toStartOf="@+id/memMenos"
         app:layout_constraintHorizontal_bias="0.5"
@@ -412,8 +461,10 @@
         android:id="@+id/recall"
         android:layout_width="wrap_content"
         android:layout_height="48dp"
+        android:backgroundTint="@color/blue_d5e"
         android:onClick="memoriaPresionado"
         android:text="@string/recall"
+        android:textColor="#212121"
         android:textSize="11sp"
         app:layout_constraintEnd_toEndOf="@+id/memMenos"
         app:layout_constraintHorizontal_bias="0"
@@ -423,23 +474,29 @@
 
     <Button
         android:id="@+id/pi"
-        android:layout_width="60dp"
+        android:layout_width="70dp"
         android:layout_height="wrap_content"
+        android:backgroundTint="@color/green_6e9"
+        android:onClick="especialPresionado"
         android:text="@string/pi"
+        android:textColor="@color/secColorContrast"
         app:layout_constraintEnd_toStartOf="@+id/entre"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/fraccion"
-        app:layout_constraintTop_toTopOf="@+id/fraccion" />
+        app:layout_constraintTop_toTopOf="@+id/fraccion"
+        tools:ignore="UsingOnClickInXml,TextContrastCheck,TextContrastCheck" />
 
     <Button
         android:id="@+id/borrar"
-        android:layout_width="60dp"
+        android:layout_width="70dp"
         android:layout_height="wrap_content"
+        android:onClick="backspacePresionado"
         android:text="@string/borrar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/entre"
-        app:layout_constraintTop_toTopOf="@+id/entre" />
+        app:layout_constraintTop_toTopOf="@+id/entre"
+        tools:ignore="UsingOnClickInXml,TextContrastCheck,TextContrastCheck" />
 
     <TextView
         android:id="@+id/Mem"
