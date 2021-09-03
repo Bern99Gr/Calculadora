@@ -1,3 +1,15 @@
+//
+//  CalculadoraViewModel.ky
+//  Calculadora
+//
+//  Creado por Bernardo García el 30/08/21.
+//
+//
+// Descripción: El archivo es la conexión entre el controlador y el modelo para su correcto
+// funcionamiento. Principalmente está para que la aplicación funcione sin problemas aún
+// cuando se gire la pantalla.
+//
+
 package com.example.calculadora
 
 import android.util.Log

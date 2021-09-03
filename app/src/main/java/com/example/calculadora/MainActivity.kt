@@ -124,7 +124,7 @@ class MainActivity : AppCompatActivity(){
         }else
             Toast.makeText(applicationContext, "ERROR: Ya existe un punto", Toast.LENGTH_SHORT).show()
 
-
+        verificarError()
         actualizaDisplayEstado()
 
 
@@ -153,6 +153,7 @@ class MainActivity : AppCompatActivity(){
             display.text = display.text
         }
         calculadoraViewModel.operacionEspera = false
+        verificarError()
         actualizaDisplayEstado()
     }
 
@@ -315,6 +316,11 @@ class MainActivity : AppCompatActivity(){
     private fun verificarError(){
         if(calculadoraViewModel.modeloCalculadora.hayError())
             Toast.makeText(applicationContext, "ERROR: " + calculadoraViewModel.modeloCalculadora.getError(), Toast.LENGTH_SHORT).show()
+        if(display.text.length>=80){
+            Toast.makeText(applicationContext, "ERROR: Se excedió el número de dígitos.", Toast.LENGTH_SHORT).show()
+            display.text = "0"
+        }
+
     }
 
 
