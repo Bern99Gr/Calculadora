@@ -243,7 +243,7 @@ class MainActivity : AppCompatActivity(){
     @Suppress("UNUSED_PARAMETER")
     fun backspacePresionado(unBoton: View){
         val tmp = display.text.toString().dropLast(1)
-        if(tmp.isEmpty() || tmp == "0"){
+        if(tmp.isEmpty() || tmp == "0" || tmp == "-"){
             display.text = "0"
             calculadoraViewModel.usuarioEstaEscribiendo = false
         }
